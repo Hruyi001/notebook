@@ -52,7 +52,7 @@ deb http://security.ubuntu.com/ubuntu/ bionic-security main restricted universe 
   
 ## 3. vim快捷键 
 ### 模式切换
-- **`i`**：进入插入模式。
+- **`i`**：进入插入模式。PPPP
 - **`Esc`**：返回普通模式。
 - **`v`**：进入可视模式。
 - **`V`**：进入行可视模式。
