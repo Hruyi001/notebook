@@ -18,11 +18,26 @@
         * 保存配置信息：sudo netplan apply
         * 测试主机和虚拟机之间的连通性 ping 192.168.100.100
         * ping www.baidu.com测试 
+  ```py
+  network:
+  version: 2
+  renderer: NetworkManager
+  ethernets:
+          ens33:
+                  dhcp4: no
+                  dhcp6: no
+                  addresses: [192.168.100.100/24]
+                  gateway4: 192.168.100.2
+                  nameservers:
+                          addresses: [114.144.114.114, 8.8.8.8, 8.8.4.4]
+
+```
 ### 1.2 桥接模式
     a. 本地主机ipconfig，查看热点名称，ip地址，网关地址
     b. 虚拟机设置中，选择桥接模式后，要勾选复制物理网络连接状态
     c. 在vmware虚拟网络编辑器中添加桥接模式, 桥接至热点的网卡
     d. 在/etc/netplan/01-network-manager-all.yaml中修改ip为热点ip所在网络，网关修改为热点的网关
+    e, sudo  netplan apply
     e. ping wwww.baidu.com，测试连通性
 
 ## 2. 修改为清华镜像源  
@@ -49,8 +64,41 @@ deb http://security.ubuntu.com/ubuntu/ bionic-security main restricted universe 
     c. 更新镜像源   
     d. sudo apt-get update 
         * 若更新失败，则在/etc/netplan/01-network-manager-all.yaml添加域名8.8.4.4 
-  
+
+## 3. ubuntu设置ssh远程登录
+[远程登录教程](https://blog.csdn.net/qq_20147559/article/details/140650080)
+
+## 4. mysql安装[](https://blog.csdn.net/haixiangyun/article/details/132597777)
+   1） sudo apt install mysql-server
+   2） 查看MySQL服务状态：sudo service mysql status
+　  　查看MySQL版本号：sudo mysql
+   3） set password for 'root'@'localhost' = password('root');
+   4) 设置MySQL允许远程登录：GRANT ALL PRIVILEGES ON *.* TO 'root'@'%'IDENTIFIED BY 'Admin@123' WITH GRANT OPTION;
+   5) 先停掉mysql服务，否则无法修改配置文件：sudo service mysql stop
+   6) 修改配置文件：sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
+   7) 启动mysql服务：　sudo service mysql start
+   8) 设置mysql自动启动： sudo systemctl start mysql
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## 3. vim快捷键 
+**定位到某行：输入行号+G**
 ### 模式切换
 - **`i`**：进入插入模式。PPPP
 - **`Esc`**：返回普通模式。
