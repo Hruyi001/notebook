@@ -110,3 +110,9 @@ deb http://security.ubuntu.com/ubuntu/ bionic-security main restricted universe 
 - **`:tabprevious`**或**`:tabp`**：切换到上一个标签页。
 - **`:tabclose`**：关闭当前标签页。
 
+## 4. vmware tools：虚拟机与主机之间复制黏贴
+    1） 点击左上角虚拟机的重新安装vmware tools
+    2) 界面会弹出vmware tools的压缩包，将其复制到其他目录
+    3) 解压，并进入vmware-tools-distrib
+    4）执行sudo ./vwmware-install.pl
+    4) 重启系统
